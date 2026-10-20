@@ -38,3 +38,23 @@ git checkout step-<k>  # carry on from the end of step k
 **You should now see:** a constitution with exactly three principles, each one something a plan can be checked against.
 
 Branch: `step-1`
+
+## Step 2: Write the spec
+
+1. In Copilot Chat (Agent), send:
+
+   ```text
+   /speckit-specify An expense splitter for a group of friends. Anyone can create a group and add the people in it. Members record what they paid and who it was for; each expense is split equally between the people it was for. A balances page shows, for every member, how much they are owed or owe.
+   ```
+
+2. Open `specs/001-expense-splitter/spec.md`. The agent may ask you up to three questions marked **NEEDS CLARIFICATION**. Answer each one in the chat. If it asks who gets the leftover cent when an amount does not divide evenly, answer: *one extra cent each, in the order people joined the group*.
+3. **Spec clinic.** Which of these two acceptance scenarios can an agent be held to?
+
+   - **A:** Given Asha paid 90.00 for Asha, Ben and Chen, when the balances page is opened, then Asha is owed 60.00 and Ben and Chen each owe 30.00.
+   - **B:** Given a group with expenses, when a member opens the balances page, then they can easily see who owes what.
+
+   B cannot be tested: nothing says what "easily" means. Find any scenario like B in your spec and rewrite it with real figures, like A.
+
+**You should now see:** a spec with three user stories, no **NEEDS CLARIFICATION** markers left, and every acceptance scenario stating the exact figure it expects.
+
+Branch: `step-2`
