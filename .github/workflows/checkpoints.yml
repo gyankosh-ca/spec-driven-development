@@ -1,0 +1,13 @@
+name: checkpoints
+on:
+  push:
+    branches: [main, "ed*/step-*", "edition-*"]
+  workflow_dispatch:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: devcontainers/ci@v0.3
+        with:
+          runCmd: bash check.sh
