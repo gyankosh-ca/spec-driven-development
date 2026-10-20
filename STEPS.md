@@ -58,3 +58,26 @@ Branch: `step-1`
 **You should now see:** a spec with three user stories, no **NEEDS CLARIFICATION** markers left, and every acceptance scenario stating the exact figure it expects.
 
 Branch: `step-2`
+
+## Step 3: Plan how to build it
+
+1. In Copilot Chat (Agent), send this. The last line is a teammate's suggestion, and it is a bad one on purpose:
+
+   ```text
+   /speckit-plan TypeScript on Node 24. Hono with JSX pages, served by @hono/node-server. SQLite through Node's built-in node:sqlite. Vitest for tests.
+   Store amounts as decimal numbers in REAL columns, so they read like the amounts people type.
+   ```
+
+2. Open `specs/001-expense-splitter/plan.md` and find the **Constitution Check** table.
+3. **Predict before you read it:** which of your three rules does the last line break?
+4. If the plan says it passes, the agent missed it. Either way, send:
+
+   ```text
+   Rule II says money is whole cents. Change the plan to store and calculate every amount as whole cents in INTEGER columns, and re-run the Constitution Check.
+   ```
+
+5. Skim what else the plan made: `research.md` (each decision and what was rejected), `data-model.md` (the tables and the split rule), `contracts/pages.md` (every page and form) and `quickstart.md`.
+
+**You should now see:** a plan whose Constitution Check passes all three rules, with every amount in whole cents.
+
+Branch: `step-3`
