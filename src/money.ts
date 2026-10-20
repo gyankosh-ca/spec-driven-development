@@ -24,9 +24,30 @@ export function formatMoney(cents: number, currency: string): string {
   return cents < 0 ? `-${symbol}${formatCents(-cents)}` : `${symbol}${formatCents(cents)}`;
 }
 
-// memberIds must be in joining order: the leftover cents go to the first people in it.
+export function parseShare(text: string): number {
+  if (!/^\s*\d+\s*$/.test(text)) throw new InputError('Shares are whole numbers, like 2');
+  return Number(text);
+}
+
+// sharesByMember must be in joining order: the leftover cents go to the first people
+// in it with a share above zero. People with 0 shares get no part.
+export function splitByShares(amountCents: number, sharesByMember: Map<number, number>): Map<number, number> {
+  const total = [...sharesByMember.values()].reduce((a, b) => a + b, 0);
+  if (total === 0) throw new InputError('Give at least one person a share above zero');
+  const parts = new Map<number, number>();
+  for (const [id, shares] of sharesByMember) {
+    if (shares > 0) parts.set(id, Math.floor((amountCents * shares) / total));
+  }
+  let leftover = amountCents - [...parts.values()].reduce((a, b) => a + b, 0);
+  for (const id of parts.keys()) {
+    if (leftover === 0) break;
+    parts.set(id, parts.get(id)! + 1);
+    leftover--;
+  }
+  return parts;
+}
+
+// An equal split is 1 share each.
 export function splitEqually(amountCents: number, memberIds: number[]): Map<number, number> {
-  const base = Math.floor(amountCents / memberIds.length);
-  const leftover = amountCents % memberIds.length;
-  return new Map(memberIds.map((id, i) => [id, base + (i < leftover ? 1 : 0)]));
+  return splitByShares(amountCents, new Map(memberIds.map((id) => [id, 1])));
 }

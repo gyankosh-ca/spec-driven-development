@@ -30,8 +30,14 @@ export function openDb(path: string): Db {
       expense_id INTEGER NOT NULL REFERENCES expenses(id),
       member_id INTEGER NOT NULL REFERENCES members(id),
       amount_cents INTEGER NOT NULL,
+      units INTEGER NOT NULL DEFAULT 1,
       PRIMARY KEY (expense_id, member_id)
     );
   `);
+  // A database made before split by shares lacks the units column.
+  const columns = db.prepare('PRAGMA table_info(shares)').all() as { name: string }[];
+  if (!columns.some((c) => c.name === 'units')) {
+    db.exec('ALTER TABLE shares ADD COLUMN units INTEGER NOT NULL DEFAULT 1');
+  }
   return db;
 }

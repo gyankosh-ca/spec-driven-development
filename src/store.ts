@@ -1,5 +1,5 @@
 import type { Db } from './db.ts';
-import { InputError, splitEqually } from './money.ts';
+import { InputError, splitByShares } from './money.ts';
 import type { Expense, Member } from './balances.ts';
 
 export type Group = { id: number; name: string; currency: string };
@@ -50,24 +50,36 @@ export function removeMember(db: Db, groupId: number, memberId: number): void {
   db.prepare('DELETE FROM members WHERE id = ?').run(memberId);
 }
 
+export type Split =
+  | { kind: 'equal'; forMembers: number[] }
+  | { kind: 'shares'; shares: Map<number, number> };
+
 export function addExpense(
-  db: Db, groupId: number, input: { description: string; amountCents: number; paidBy: number; forMembers: number[] },
+  db: Db, groupId: number, input: { description: string; amountCents: number; paidBy: number; split: Split },
 ): number {
   const description = input.description.trim();
   if (!description) throw new InputError('Describe what this was for');
   const memberIds = listMembers(db, groupId).map((m) => m.id);
   if (!memberIds.includes(input.paidBy)) throw new InputError('Choose who paid');
-  const forMembers = memberIds.filter((id) => input.forMembers.includes(id));
-  if (forMembers.length === 0) throw new InputError('Choose at least one person this was for');
 
-  const shares = splitEqually(input.amountCents, forMembers);
+  // Rebuilt in joining order, which the leftover-cents rule depends on.
+  const { split } = input;
+  const units = new Map(memberIds.map((id) => [
+    id,
+    split.kind === 'equal' ? (split.forMembers.includes(id) ? 1 : 0) : (split.shares.get(id) ?? 0),
+  ]));
+  if (split.kind === 'equal' && ![...units.values()].some((u) => u > 0)) {
+    throw new InputError('Choose at least one person this was for');
+  }
+  const parts = splitByShares(input.amountCents, units);
+
   db.exec('BEGIN');
   try {
     const result = db.prepare('INSERT INTO expenses (group_id, description, amount_cents, paid_by) VALUES (?, ?, ?, ?)')
       .run(groupId, description, input.amountCents, input.paidBy);
     const expenseId = Number(result.lastInsertRowid);
-    const insertShare = db.prepare('INSERT INTO shares (expense_id, member_id, amount_cents) VALUES (?, ?, ?)');
-    for (const [memberId, cents] of shares) insertShare.run(expenseId, memberId, cents);
+    const insertShare = db.prepare('INSERT INTO shares (expense_id, member_id, amount_cents, units) VALUES (?, ?, ?, ?)');
+    for (const [memberId, cents] of parts) insertShare.run(expenseId, memberId, cents, units.get(memberId)!);
     db.exec('COMMIT');
     return expenseId;
   } catch (error) {

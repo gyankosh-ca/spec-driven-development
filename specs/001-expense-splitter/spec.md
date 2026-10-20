@@ -4,7 +4,7 @@
 
 **Created**: 2026-10-20
 
-**Status**: Clarified
+**Status**: Clarified · amended 2026-10-20 (split by shares)
 
 **Input**: User description: "An expense splitter for a group of friends. Anyone can create a group and add the people in it. Members record what they paid and who it was for; each expense is split equally between the people it was for. A balances page shows, for every member, how much they are owed or owe."
 
@@ -15,6 +15,11 @@
 - Q: When an amount does not divide evenly, who gets the leftover cents? → A: One extra cent each to the people the expense was for, in the order they were added to the group, so the shares add up to the exact total.
 - Q: Can a member be removed from a group? → A: Only if they are in no expense. Otherwise removing them is refused with a message saying why.
 - Q: Which currency? → A: One currency per group, chosen when the group is created. No conversion between currencies.
+
+### Session 2026-10-20 (requirement change: split by shares)
+
+- Q: What is a share? → A: A whole number per person, 0 or more. 0 means the expense was not for them.
+- Q: Who gets the leftover cents in a split by shares? → A: The same rule as an equal split: one extra cent each to the people with a share above zero, in the order they joined.
 
 ## User Scenarios & Testing *(mandatory)*
 
@@ -68,6 +73,24 @@ Any member opens the balances page and sees, for each person, how much they are 
 
 ---
 
+### User Story 4 - Split by shares (Priority: P2)
+
+Not every cost is shared evenly: someone who stayed two nights pays twice. A member records an expense split by shares, giving each person a whole number of shares.
+
+**Why this priority**: added after the first version shipped; groups asked for it as soon as one expense was uneven.
+
+**Independent Test**: Record "Hotel", 100.00, paid by Chen, with shares Asha 2, Ben 1, Chen 1, and see the shares 50.00, 25.00, 25.00.
+
+**Acceptance Scenarios**:
+
+1. **Given** the group "Lisbon trip" with Asha, Ben and Chen, **When** Chen records "Hotel" for 100.00 split by shares Asha 2, Ben 1, Chen 1, **Then** the shares are 50.00 for Asha, 25.00 for Ben and 25.00 for Chen.
+2. **Given** the same group, **When** Asha records "Wine" for 10.00 split by shares Asha 2, Ben 1, Chen 0, **Then** the shares are 6.67 for Asha and 3.33 for Ben, Chen has no share, and they add up to 10.00.
+3. **Given** the same group, **When** someone splits by shares with every share 0, **Then** it is refused with the message "Give at least one person a share above zero".
+4. **Given** the same group, **When** someone enters a share of 1.5 or -1, **Then** it is refused with the message "Shares are whole numbers, like 2".
+5. **Given** an expense split equally, **When** it is recorded, **Then** it behaves exactly as in User Story 2: an equal split is a split where everyone chosen has 1 share.
+
+---
+
 ### Edge Cases
 
 - An amount that does not divide evenly: the leftover cents go one each to the people the expense was for, in the order they joined the group.
@@ -82,18 +105,19 @@ Any member opens the balances page and sees, for each person, how much they are 
 - **FR-001**: Users MUST be able to create a group with a name and one currency.
 - **FR-002**: Users MUST be able to add members to a group; member names MUST be unique within the group, ignoring case.
 - **FR-003**: Users MUST be able to record an expense with a description, an amount greater than zero to the cent, one payer and one or more people it was for (all members by default).
-- **FR-004**: The system MUST split each expense equally between the people it was for, giving leftover cents one each to those people in the order they joined, so the shares add up to the exact amount.
+- **FR-004**: The system MUST split each expense between the people it was for, either equally or by shares (FR-009). Each person's part is the amount × their shares ÷ the total shares, rounded down to the cent; the leftover cents go one each to the people with a share above zero, in the order they joined, so the parts add up to the exact amount.
 - **FR-005**: The system MUST show each member's balance: what they paid minus the sum of their shares.
 - **FR-006**: Balances MUST add up to exactly zero for every group, after every change.
 - **FR-007**: The system MUST refuse to remove a member who is the payer of, or one of the people in, any expense.
 - **FR-008**: The system MUST keep groups, members and expenses when the app is restarted.
+- **FR-009**: Users MUST be able to split an expense by shares: a whole number, 0 or more, per member, with at least one above zero. An equal split is the same as 1 share each for the people chosen.
 
 ### Key Entities
 
 - **Group**: a name and a currency; has members and expenses.
 - **Member**: a name, unique within the group, and the order they joined.
 - **Expense**: a description, an amount, the member who paid, and the members it was for.
-- **Share**: one member's part of one expense.
+- **Share**: one member's part of one expense, in cents. A split by shares also records how many shares each person had.
 
 ## Success Criteria *(mandatory)*
 
@@ -107,4 +131,4 @@ Any member opens the balances page and sees, for each person, how much they are 
 
 - One currency per group; amounts are entered and shown to the cent.
 - No accounts or sign-in: anyone with the app open can use every group. Sign-in is out of scope.
-- Splitting by shares or exact amounts, and settling up, are later features.
+- Splitting by exact amounts, and settling up, are later features.

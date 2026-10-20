@@ -2,7 +2,7 @@ import { Hono } from 'hono';
 import type { Context } from 'hono';
 import { computeBalances } from './balances.ts';
 import type { Db } from './db.ts';
-import { InputError, parseAmount } from './money.ts';
+import { InputError, parseAmount, parseShare } from './money.ts';
 import * as store from './store.ts';
 import { BalancesPage } from './views/BalancesPage.tsx';
 import { GroupPage } from './views/GroupPage.tsx';
@@ -65,13 +65,20 @@ export function createApp(db: Db) {
     const group = groupOr404(c);
     if (!group) return c.notFound();
     const form = await c.req.parseBody({ all: true });
-    const forMembers = ([] as unknown[]).concat(form.forMembers ?? []).map(Number);
-    return handle(c, group, () => void store.addExpense(db, group.id, {
-      description: String(form.description ?? ''),
-      amountCents: parseAmount(String(form.amount ?? '')),
-      paidBy: Number(form.paidBy),
-      forMembers,
-    }));
+    return handle(c, group, () => {
+      const split: store.Split = form.split === 'shares'
+        ? {
+            kind: 'shares',
+            shares: new Map(store.listMembers(db, group.id).map((m) => [m.id, parseShare(String(form[`shares_${m.id}`] ?? '0'))])),
+          }
+        : { kind: 'equal', forMembers: ([] as unknown[]).concat(form.forMembers ?? []).map(Number) };
+      store.addExpense(db, group.id, {
+        description: String(form.description ?? ''),
+        amountCents: parseAmount(String(form.amount ?? '')),
+        paidBy: Number(form.paidBy),
+        split,
+      });
+    });
   });
 
   app.get('/groups/:id/balances', (c) => {

@@ -28,6 +28,7 @@ export function Layout({ title, children }: { title: string; children: Child }) 
           .shares li { list-style: none; margin: 0; }
           .checks { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; }
           .checks label { display: inline-flex; align-items: center; gap: .35rem; margin: 0; }
+          .checks input.share { width: 4.5rem; margin: 0; }
           td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
           [role=alert] { background: #fdecec; border-left: 4px solid #c62828; padding: .5rem .75rem; }
           .muted { color: var(--pico-muted-color); }

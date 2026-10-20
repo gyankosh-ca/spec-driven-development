@@ -113,6 +113,47 @@ describe('User Story 3: see who owes whom', () => {
   });
 });
 
+describe('User Story 4: split by shares', () => {
+  const byShares = (path: string, description: string, amount: string, paidBy: string, shares: string[]) =>
+    post(`${path}/expenses`, {
+      description, amount, paidBy, split: 'shares',
+      shares_1: shares[0], shares_2: shares[1], shares_3: shares[2],
+    });
+
+  it('1. Hotel: 100.00 by shares 2, 1, 1', async () => {
+    const path = await lisbonTrip();
+    await byShares(path, 'Hotel', '100.00', '3', ['2', '1', '1']);
+    expect(text(await page(path))).toContain('Hotel Chen €100.00 €50.00 €25.00 €25.00');
+  });
+
+  it('2. Wine: 10.00 by shares 2, 1, 0', async () => {
+    const path = await lisbonTrip();
+    await byShares(path, 'Wine', '10.00', '1', ['2', '1', '0']);
+    expect(text(await page(path))).toContain('Wine Asha €10.00 €6.67 €3.33 – ');
+  });
+
+  it('3. refuses every share 0', async () => {
+    const res = await byShares(await lisbonTrip(), 'Nothing', '10', '1', ['0', '0', '0']);
+    expect(res.status).toBe(400);
+    expect(await res.text()).toContain('Give at least one person a share above zero');
+  });
+
+  it('4. refuses shares that are not whole numbers', async () => {
+    const path = await lisbonTrip();
+    for (const bad of ['1.5', '-1']) {
+      const res = await byShares(path, 'Odd', '10', '1', [bad, '1', '1']);
+      expect(res.status).toBe(400);
+      expect(await res.text()).toContain('Shares are whole numbers, like 2');
+    }
+  });
+
+  it('5. an equal split still behaves as in User Story 2', async () => {
+    const path = await lisbonTrip();
+    await post(`${path}/expenses`, { description: 'Taxi', amount: '10.00', paidBy: '2', split: 'equal', forMembers: forAll });
+    expect(text(await page(path))).toContain('Taxi Ben €10.00 €3.34 €3.33 €3.33');
+  });
+});
+
 describe('Removing a member (FR-007)', () => {
   it('removes someone in no expense', async () => {
     const path = await lisbonTrip();

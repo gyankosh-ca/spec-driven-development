@@ -101,3 +101,14 @@ description: "Task list for the expense splitter"
 ## Implementation strategy
 
 MVP is User Story 1. Then add one story at a time, each ending with `npm test` green.
+
+---
+
+## Phase 7: Convergence
+
+- [X] T023 Write failing tests for `splitByShares` in `tests/money.test.ts`: Hotel 100.00 by 2, 1, 1 and Wine 10.00 by 2, 1, 0, per US4/AC1–AC2 (missing)
+- [X] T024 Implement `splitByShares` in `src/money.ts` and make `splitEqually` call it with 1 share each, per FR-004 (missing)
+- [X] T025 Add the `units` column to `shares` in `src/db.ts`, adding it with default 1 to an existing database, per plan: data model (missing)
+- [X] T026 Write failing route tests for US4/AC1–AC5 in `tests/app.test.ts` (missing)
+- [X] T027 Accept `split` and `shares_<memberId>` in `POST /groups/:id/expenses` and `addExpense`, refusing all-zero and non-whole shares, per US4/AC3–AC4 and FR-009 (missing)
+- [X] T028 Add the "split equally / split by shares" choice to the expense form in `src/views/GroupPage.tsx`, per FR-009 (missing)

@@ -78,10 +78,18 @@ export function GroupPage({ group, members, expenses, error }: Props) {
               </label>
             </div>
             <fieldset>
-              <legend>For</legend>
+              <legend><label><input type="radio" name="split" value="equal" checked /> Split equally, for</label></legend>
               <div class="checks">
                 {members.map((m) => (
                   <label><input type="checkbox" name="forMembers" value={String(m.id)} checked />{m.name}</label>
+                ))}
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend><label><input type="radio" name="split" value="shares" /> Split by shares</label></legend>
+              <div class="checks">
+                {members.map((m) => (
+                  <label>{m.name}<input type="number" name={`shares_${m.id}`} value="1" min="0" step="1" class="share" /></label>
                 ))}
               </div>
             </fieldset>

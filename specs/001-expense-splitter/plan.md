@@ -1,6 +1,6 @@
 # Implementation Plan: Expense Splitter
 
-**Branch**: `001-expense-splitter` | **Date**: 2026-10-20 | **Spec**: [spec.md](spec.md)
+**Branch**: `001-expense-splitter` | **Date**: 2026-10-20 · re-planned 2026-10-20 for split by shares | **Spec**: [spec.md](spec.md)
 
 **Input**: Feature specification from `/specs/001-expense-splitter/spec.md`
 
@@ -10,7 +10,8 @@ A small web app where a group records shared expenses and sees balances. One Nod
 process serves HTML pages built on the server with Hono and JSX; forms post back to the
 server, which saves to one SQLite file. All money is held as whole cents. The split and
 balance rules live in plain functions with no web or database code, so Vitest can test
-every acceptance scenario directly.
+every acceptance scenario directly. Split by shares (User Story 4) generalises the split:
+one function divides by shares, and an equal split is 1 share each.
 
 ## Technical Context
 
@@ -41,7 +42,7 @@ every acceptance scenario directly.
 | Principle | How this plan meets it | Result |
 |---|---|---|
 | I. Test First | Every task in `tasks.md` starts with a failing Vitest test; `npm test` runs them all | ✅ Pass |
-| II. Money Is Whole Cents | Amounts are parsed from text straight into whole cents and stored in `INTEGER` columns. The equal split uses whole-cent division and hands out the leftover cents in joining order, as the spec says | ✅ Pass |
+| II. Money Is Whole Cents | Amounts are parsed from text straight into whole cents and stored in `INTEGER` columns. Both splits use one whole-cent division by shares and hand out the leftover cents in joining order, as the spec says | ✅ Pass |
 | III. One Small App | One process, server-rendered JSX, one SQLite file. Two dependencies, both named above with the problem they solve; SQLite needs none, because Node has it built in. Pico CSS is a stylesheet link, not a framework: no client-side code | ✅ Pass |
 
 Re-checked after Phase 1 design: still passes.
@@ -65,7 +66,7 @@ specs/001-expense-splitter/
 
 ```text
 src/
-├── money.ts             # parse "10.05" → 1005, format 1005 → "10.05", split equally
+├── money.ts             # parse "10.05" → 1005, format 1005 → "10.05", split by shares (equal = 1 each)
 ├── balances.ts          # balance per member from expenses and shares
 ├── db.ts                # open the SQLite file, create tables
 ├── store.ts             # groups, members, expenses: read and write

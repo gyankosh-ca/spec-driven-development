@@ -12,6 +12,12 @@
 - **Rationale**: the spec's clarification. Deterministic, so a test can state the exact shares.
 - **Alternatives considered**: the payer absorbs the difference (not what the spec says); random assignment (cannot be tested).
 
+## Split by shares (re-plan, 2026-10-20)
+
+- **Decision**: one function, `splitByShares(amountCents, sharesByMember)`: each part is `floor(amount × shares ÷ totalShares)`, and the leftover cents go one each, in joining order, to members with a share above zero. `splitEqually` becomes 1 share each, so the existing tests prove nothing changed for equal splits. The share counts are saved in a new `units` column on `shares`.
+- **Rationale**: Constitution II (whole cents, one stated leftover rule) and III (no new dependency; one rule instead of two).
+- **Alternatives considered**: a separate algorithm per split type (two leftover rules to keep in step); storing percentages (decimals, which break Constitution II).
+
 ## Web framework and pages
 
 - **Decision**: Hono with its JSX renderer, served by `@hono/node-server`. Plain HTML forms that post and redirect.
