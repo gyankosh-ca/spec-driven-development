@@ -1,7 +1,7 @@
 name: checkpoints
 on:
   push:
-    branches: [main, "ed*/step-*", "edition-*"]
+    branches: [main, "step-*"]
   workflow_dispatch:
 jobs:
   check:

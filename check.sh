@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Proves this checkpoint works. CI runs it on main and on every edN/step-* branch,
+# Proves this checkpoint works. CI runs it on main and on every step-* branch,
 # so a broken checkpoint is caught before a student opens it.
 set -euo pipefail
 export PATH="$HOME/.local/bin:$PATH"

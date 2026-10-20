@@ -9,7 +9,7 @@ If you fall behind, jump to it:
 
 ```bash
 git stash                  # set your own attempt aside (git stash pop brings it back)
-git checkout ed1/step-<k>  # carry on from the end of step k
+git checkout step-<k>  # carry on from the end of step k
 ```
 
 ## Before you start
@@ -37,4 +37,4 @@ git checkout ed1/step-<k>  # carry on from the end of step k
 
 **You should now see:** a constitution with exactly three principles, each one something a plan can be checked against.
 
-Branch: `ed1/step-1`
+Branch: `step-1`

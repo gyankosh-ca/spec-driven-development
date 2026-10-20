@@ -20,18 +20,18 @@ Each step of the session has a branch with the work done up to that point:
 
 ```bash
 git stash                      # put your own changes aside
-git checkout ed1/step-3   # jump to the end of step 3
+git checkout step-3            # jump to the end of step 3
 ```
 
 | Branch | Where you are |
 |---|---|
 | `main` | The start: an empty project |
-| `ed1/step-1` | Spec Kit set up, and the project's three rules (the constitution) written |
-| `ed1/step-2` | The spec for the expense splitter, clarified |
-| `ed1/step-3` | The technical plan, checked against the rules |
-| `ed1/step-4` | The task list, each task starting with a test |
-| `ed1/step-5` | The app built: running in a browser tab, tests passing |
-| `ed1/step-6` | Split by shares added: spec first, then the code |
+| `step-1` | Spec Kit set up, and the project's three rules (the constitution) written |
+| `step-2` | The spec for the expense splitter, clarified |
+| `step-3` | The technical plan, checked against the rules |
+| `step-4` | The task list, each task starting with a test |
+| `step-5` | The app built: running in a browser tab, tests passing |
+| `step-6` | Split by shares added: spec first, then the code |
 
 ## Keep your work
 
@@ -47,5 +47,6 @@ extension). You get the same setup on your own laptop.
 ## Past editions
 
 The course changes as the tools do. `main` is always the latest edition. Earlier
-editions are kept as branches (`edition-1`, …) with their own step branches
-(`ed1/step-1`, …), and every release is tagged (`ed1-v1.0`).
+editions are kept as tags: `edition-1` for the start, `ed1-step-1` … for its steps,
+and every release is tagged (`ed1-v1.0`). To work from one, start your own branch:
+`git checkout -b my-work ed1-step-3`.
