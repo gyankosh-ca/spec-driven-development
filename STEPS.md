@@ -16,15 +16,23 @@ git checkout step-<k>  # carry on from the end of step k
 
 1. Open this repo in a codespace (the button in `README.md`) and wait for the setup to finish.
 2. In the terminal, run `specify --help`. A list of commands means you are ready.
-3. Open the Copilot Chat panel and sign in with your GitHub account if it asks. Copilot Free is enough.
+3. Pick your AI agent. Both are already installed in the codespace:
 
-**You should now see:** the `specify` command list, and Copilot Chat ready for a message.
+   | Agent | Cost | Sign in |
+   |---|---|---|
+   | **Copilot Chat** (default) | Copilot Free is enough: about 50 chat requests a month, and this session uses 10 to 15 | Your GitHub account |
+   | **Kilo Code** (if you are out of Copilot requests) | Free models, no card | A free Kilo account; pick a model marked **Free** |
+
+   The steps say "Copilot Chat". With Kilo Code, send exactly the same messages in its panel.
+
+**You should now see:** the `specify` command list, and your agent's chat ready for a message.
 
 ## Step 1: Set up Spec Kit and write the rules
 
 1. In the terminal, run `specify init --here --integration copilot --script sh`. Answer **y** when it asks to merge into the current folder.
-2. Look at what appeared: `.specify/` holds the templates and the constitution, and `.github/skills/` holds the `/speckit-…` commands Copilot can now run.
-3. Open Copilot Chat, switch it to **Agent**, and send:
+2. Add Kilo Code as a second agent, so you can switch if Copilot runs out: `specify integration install kilocode`.
+3. Look at what appeared: `.specify/` holds the templates and the constitution; `.github/skills/` and `.kilocode/` hold the `/speckit-…` commands each agent can now run.
+4. Open Copilot Chat, switch it to **Agent**, and send:
 
    ```text
    /speckit-constitution Three rules for an expense splitter.
@@ -33,7 +41,7 @@ git checkout step-<k>  # carry on from the end of step k
    3. One small app: one process, server-rendered pages, TypeScript with Hono and JSX, one SQLite file, no client-side framework.
    ```
 
-4. Open `.specify/memory/constitution.md` and read it. Delete anything you did not ask for.
+5. Open `.specify/memory/constitution.md` and read it. Delete anything you did not ask for.
 
 **You should now see:** a constitution with exactly three principles, each one something a plan can be checked against.
 

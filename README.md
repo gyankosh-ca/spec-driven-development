@@ -38,11 +38,20 @@ git checkout step-3            # jump to the end of step 3
 Commit in the codespace. GitHub offers to save it as a copy (a fork) under your own
 account. Unused codespaces are deleted after about 30 days.
 
-## No GitHub account?
+## Working on your own laptop instead
 
-Download this repo as a zip from your Academy dashboard, open the folder in VS Code
-and choose **Reopen in Container** (needs Docker Desktop and the Dev Containers
-extension). You get the same setup on your own laptop.
+No Docker needed. Get the repo (clone it, or download the zip from your Academy
+dashboard), open a terminal in its folder and run one command:
+
+| Your laptop | Command |
+|---|---|
+| Mac or Linux | `bash setup-local.sh` |
+| Windows | `powershell -ExecutionPolicy Bypass -File setup-local.ps1` |
+
+It installs only what is missing: Node.js 24, `uv`, Spec Kit, and on Windows Git
+(which brings the `bash` that Spec Kit's scripts need). Then open the folder in VS
+Code and follow `STEPS.md`. Any coding agent Spec Kit supports will work; the steps
+use Copilot or Kilo Code.
 
 ## Past editions
 

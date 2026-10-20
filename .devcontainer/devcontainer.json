@@ -14,7 +14,7 @@
     "codespaces": { "openFiles": ["STEPS.md"] },
     "vscode": {
       "settings": { "terminal.integrated.fontSize": 16, "editor.fontSize": 16 },
-      "extensions": ["GitHub.copilot", "GitHub.copilot-chat"]
+      "extensions": ["GitHub.copilot", "GitHub.copilot-chat", "kilocode.kilo-code"]
     }
   }
 }
