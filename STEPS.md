@@ -23,15 +23,15 @@ git checkout step-<k>  # carry on from the end of step k
    | **Copilot Chat** (default) | Copilot Free is enough: about 50 chat requests a month, and this session uses 10 to 15 | Your GitHub account |
    | **Kilo Code** (if you are out of Copilot requests) | Free models, no card | A free Kilo account; pick a model marked **Free** |
 
-   The steps say "Copilot Chat". With Kilo Code, send exactly the same messages in its panel.
+   The steps say "Copilot Chat". With Kilo Code, send the same messages in its panel, with **a dot instead of the first dash** in each command: `/speckit.plan`, not `/speckit-plan`.
 
 **You should now see:** the `specify` command list, and your agent's chat ready for a message.
 
 ## Step 1: Set up Spec Kit and write the rules
 
 1. In the terminal, run `specify init --here --integration copilot --script sh`. Answer **y** when it asks to merge into the current folder.
-2. Add Kilo Code as a second agent, so you can switch if Copilot runs out: `specify integration install kilocode`.
-3. Look at what appeared: `.specify/` holds the templates and the constitution; `.github/skills/` and `.kilocode/` hold the `/speckit-…` commands each agent can now run.
+2. Add Kilo Code as a second agent, so you can switch if Copilot runs out: `specify integration install kilocode --force`. It warns that Copilot was not built to share; that is expected, and Copilot stays the default.
+3. Look at what appeared: `.specify/` holds the templates and the constitution; `.github/skills/` (Copilot) and `.kilo/commands/` (Kilo Code) hold the commands each agent can now run.
 4. Open Copilot Chat, switch it to **Agent**, and send:
 
    ```text
