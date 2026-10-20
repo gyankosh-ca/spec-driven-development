@@ -8,11 +8,13 @@
   },
   "hostRequirements": { "cpus": 2 },
   "postCreateCommand": "bash .devcontainer/setup.sh",
+  "forwardPorts": [3000],
+  "portsAttributes": { "3000": { "label": "Expense splitter", "onAutoForward": "openBrowser" } },
   "customizations": {
-    "codespaces": { "openFiles": ["README.md"] },
+    "codespaces": { "openFiles": ["STEPS.md"] },
     "vscode": {
       "settings": { "terminal.integrated.fontSize": 16, "editor.fontSize": 16 },
-      "extensions": ["ms-python.python"]
+      "extensions": ["GitHub.copilot", "GitHub.copilot-chat"]
     }
   }
 }

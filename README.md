@@ -25,8 +25,13 @@ git checkout ed1/step-3   # jump to the end of step 3
 
 | Branch | Where you are |
 |---|---|
-| `main` | The start |
-| `ed1/step-1` | (describe the end of step 1) |
+| `main` | The start: an empty project |
+| `ed1/step-1` | Spec Kit set up, and the project's three rules (the constitution) written |
+| `ed1/step-2` | The spec for the expense splitter, clarified |
+| `ed1/step-3` | The technical plan, checked against the rules |
+| `ed1/step-4` | The task list, each task starting with a test |
+| `ed1/step-5` | The app built: running in a browser tab, tests passing |
+| `ed1/step-6` | Split by shares added: spec first, then the code |
 
 ## Keep your work
 
