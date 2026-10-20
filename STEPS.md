@@ -92,3 +92,29 @@ Branch: `step-3`
 **You should now see:** about 20 tasks in phases (setup, foundation, one phase per user story, polish), and in every story a test task comes before the code task it proves.
 
 Branch: `step-4`
+
+## Step 5: Build it
+
+1. In Copilot Chat (Agent), send:
+
+   ```text
+   /speckit-implement Phases 1 to 3 only: setup, foundation and User Story 1. Write each test first and run it to see it fail.
+   ```
+
+2. Watch the agent tick tasks off in `tasks.md`. Approve the commands it asks to run.
+3. When it stops, run `npm test`, then `npm run dev`. Codespaces opens the app in a new tab. Create a group and add three people.
+4. The rest of the tasks take longer than the session allows. Jump to the finished app to see all three stories working:
+
+   ```bash
+   git stash
+   git checkout step-5
+   npm install
+   npm test
+   npm run dev
+   ```
+
+5. In the app, follow `specs/001-expense-splitter/quickstart.md`: Dinner, then Taxi, then Balances.
+
+**You should now see:** 25 passing tests, and on the balances page: Asha is owed 56.66, Ben owes 23.33, Chen owes 33.33. Those are the spec's own numbers.
+
+Branch: `step-5`
