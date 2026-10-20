@@ -1,11 +1,11 @@
-# A1 · Spec-Driven Development
+# Spec-Driven Development
 
 The starter repo for the Gyankosh Academy session **Spec-Driven Development**.
 Course page: https://academy.gyankosh.ca/courses/spec-driven-development
 
 ## Open it
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/gyankosh-ca/a1-spec-driven-development?quickstart=1)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/gyankosh-ca/spec-driven-development?quickstart=1)
 
 1. Sign in to GitHub (a free personal account is enough).
 2. Click the button above, then **Create codespace**. It takes about a minute.

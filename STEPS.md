@@ -1,4 +1,4 @@
-# A1 · Spec-Driven Development: steps
+# Spec-Driven Development: steps
 
 Work through these in order during the session. Each step ends at a branch you can
 jump to if you fall behind: `git stash && git checkout ed1/step-<k>`.
