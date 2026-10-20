@@ -118,3 +118,30 @@ Branch: `step-4`
 **You should now see:** 25 passing tests, and on the balances page: Asha is owed 56.66, Ben owes 23.33, Chen owes 33.33. Those are the spec's own numbers.
 
 Branch: `step-5`
+
+## Step 6: The requirement changes
+
+The group comes back: *"Chen stayed two nights. Can an expense be split by shares, not only equally?"*
+Change the spec first, then the plan, then the code. Never the code first.
+
+1. Change the spec. In Copilot Chat (Agent), send:
+
+   ```text
+   Update specs/001-expense-splitter/spec.md, and nothing else: add a user story for splitting an expense by shares. Each person gets a whole number of shares, 0 or more; leftover cents follow the same rule as an equal split. An equal split is 1 share each. Example: Hotel, 100.00, paid by Chen, shares Asha 2, Ben 1, Chen 1 gives 50.00, 25.00, 25.00.
+   ```
+
+   Read the new user story. Every acceptance scenario should state exact figures, as in the spec clinic.
+2. Re-plan: send `/speckit-plan Re-plan for split by shares.` and check the Constitution Check still passes rule II.
+3. Find the gap: send `/speckit-converge`. It compares the code with the spec and plan, and adds a **Convergence** phase of new tasks to `tasks.md`. It does not change any code.
+4. Build the new tasks: send `/speckit-implement`, then run `npm test`.
+5. Send `/speckit-converge` again. When the code matches the spec, it reports **Converged**.
+
+To jump to the finished version: `git stash`, `git checkout step-6`, `npm install`, `npm run dev`. Record the hotel by shares and check the balances.
+
+**You should now see:** User Story 4 in the spec, a Phase 7: Convergence in `tasks.md` with every task ticked, 37 passing tests, and the hotel split 50.00, 25.00, 25.00.
+
+Branch: `step-6`
+
+## What's next
+
+On your own: add a second feature, **settle up**, which suggests the fewest payments that clear every balance. It is a new feature, so start a new spec: `/speckit-specify` makes `specs/002-settle-up/`. Then go round the same loop: plan, tasks, implement, converge.
