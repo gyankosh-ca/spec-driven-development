@@ -23,7 +23,23 @@ git checkout step-<k>  # carry on from the end of step k
    | **Copilot Chat** (default) | Copilot Free is enough: about 50 chat requests a month, and this session uses 10 to 15 | Your GitHub account |
    | **Kilo Code** (if you are out of Copilot requests) | Free models, no card | A free Kilo account; pick a model marked **Free** |
 
-   The steps say "Copilot Chat". With Kilo Code, send the same messages in its panel, with **a dot instead of the first dash** in each command: `/speckit.plan`, not `/speckit-plan`.
+   The steps say "Copilot Chat" and write commands Copilot's way. With another agent, send the same messages in its chat, writing each command the way the table below shows.
+
+### Command names by agent
+
+Spec Kit gives every agent the same commands, but agents spell them differently. Find yours, then read every `/speckit-…` in these steps that way.
+
+| Agent | How to write a command | Spec Kit key (for `specify init` / `specify integration install`) |
+|---|---|---|
+| **Copilot** (VS Code chat) | `/speckit-plan` | `copilot` |
+| **Kilo Code** | `/speckit.plan` | `kilocode` |
+| Claude Code | `/speckit-plan` | `claude` |
+| Cursor | `/speckit-plan` | `cursor-agent` |
+| OpenCode | `/speckit.plan` | `opencode` |
+| Kiro CLI | `/speckit.plan` | `kiro-cli` |
+| Codex CLI | `$speckit-plan` (Codex starts skills with `$`) | `codex` |
+
+The codespace has Copilot and Kilo Code set up from step 1. On your own laptop with a different agent, use its key in step 1: `specify init --here --integration <key> --script sh`. `specify check` lists every agent Spec Kit supports.
 
 **You should now see:** the `specify` command list, and your agent's chat ready for a message.
 
