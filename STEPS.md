@@ -81,3 +81,14 @@ Branch: `step-2`
 **You should now see:** a plan whose Constitution Check passes all three rules, with every amount in whole cents.
 
 Branch: `step-3`
+
+## Step 4: Break the plan into tasks
+
+1. In Copilot Chat (Agent), send `/speckit-tasks`.
+2. Open `specs/001-expense-splitter/tasks.md`. The tasks are grouped by user story, in the spec's priority order.
+3. Check each story's tasks: **does the first one write a test?** Rule I says it must. Move or add a test task wherever it does not.
+4. Cut anything the spec never asked for. If it is not in a user story or a requirement, it does not belong.
+
+**You should now see:** about 20 tasks in phases (setup, foundation, one phase per user story, polish), and in every story a test task comes before the code task it proves.
+
+Branch: `step-4`
