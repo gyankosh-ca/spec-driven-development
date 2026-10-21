@@ -38,6 +38,12 @@ git checkout step-3            # jump to the end of step 3
 Commit in the codespace. GitHub offers to save it as a copy (a fork) under your own
 account. Unused codespaces are deleted after about 30 days.
 
+## After the session
+
+- [`YOUR-OWN-PROJECT.md`](YOUR-OWN-PROJECT.md): the same loop on your own app, new or existing.
+- [`decision-card.md`](decision-card.md): when a spec is worth it, and your own rule.
+- Practice: spec a second feature, **settle up**, on your own.
+
 ## Working on your own laptop instead
 
 No Docker needed. Get the repo (clone it, or download the zip from your Academy
