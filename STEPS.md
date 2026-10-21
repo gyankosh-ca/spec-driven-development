@@ -20,7 +20,7 @@ git checkout step-<k>  # carry on from the end of step k
 
    | Agent | Cost | Sign in |
    |---|---|---|
-   | **Copilot Chat** (default) | Copilot Free is enough: about 50 chat requests a month, and this session uses 10 to 15 | Your GitHub account |
+   | **Copilot Chat** (default) | Copilot Free: a monthly allowance of AI use, enough for this session if you have not used it up this month | Your GitHub account |
    | **Kilo Code** (if you are out of Copilot requests) | Free models, no card | A free Kilo account; pick a model marked **Free** |
 
    The steps say "Copilot Chat" and write commands Copilot's way. With another agent, send the same messages in its chat, writing each command the way the table below shows.
