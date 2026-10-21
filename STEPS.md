@@ -145,7 +145,7 @@ Branch: `step-5`
 
 ## Step 6: The requirement changes
 
-The group comes back: *"Chen stayed two nights. Can an expense be split by shares, not only equally?"*
+The group comes back: *"Asha stayed two nights, and Chen paid the hotel. Can an expense be split by shares, not only equally?"*
 Change the spec first, then the plan, then the code. Never the code first.
 
 1. Change the spec. In Copilot Chat (Agent), send:
