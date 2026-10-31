@@ -99,6 +99,7 @@ Branch: `step-1`
 Starting from only a vague idea on your own project? After `/speckit-specify`, send `/speckit-clarify`. It asks up to five questions and writes your answers into the spec.
 
 **You should now see:** a spec with three user stories, no **NEEDS CLARIFICATION** markers left, and every acceptance scenario stating the exact figure it expects.
+Beside it, `checklists/requirements.md`: the agent checking its own spec against a fixed list, every time. A tick is not proof: the spec clinic in item 3 is why.
 
 Branch: `step-2`
 
