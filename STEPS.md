@@ -108,6 +108,7 @@ Branch: `step-2`
 
    ```text
    /speckit-plan TypeScript on Node 24. Hono with JSX pages, served by @hono/node-server. SQLite through Node's built-in node:sqlite. Vitest for tests.
+   Pico CSS from its CDN for the look: a header bar, each section in a card. Expenses as a table with one column per person; every amount with the currency sign.
    Store amounts as decimal numbers in REAL columns, so they read like the amounts people type.
    ```
 
@@ -199,5 +200,6 @@ Branch: `step-6`
 ## What's next
 
 - **Practice:** add a second feature, **settle up**, which suggests the fewest payments that clear every balance. It is a new feature, so start a new spec: `/speckit-specify` makes `specs/002-settle-up/`. Then go round the same loop: plan, tasks, implement, converge.
+- **More practice:** edit or delete an expense. The spec never asked for either, so the app has neither. Add them to the spec first, then the same loop.
 - **Your own app:** [`YOUR-OWN-PROJECT.md`](YOUR-OWN-PROJECT.md) walks through the same loop on a project of yours, new or existing.
 - **When to bother:** [`decision-card.md`](decision-card.md) says when a spec is worth it. Fill in "My rule" for your own team.
