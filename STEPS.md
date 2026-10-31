@@ -115,7 +115,7 @@ Branch: `step-2`
 
 2. Open `specs/001-expense-splitter/plan.md` and find the **Constitution Check** table.
 3. **Predict before you read it:** which of your three rules does the last line break?
-4. If the plan says it passes, the agent missed it. Either way, send:
+4. If the agent stops and asks instead, it caught the break: pick keeping the constitution, then go to item 5. Otherwise, if the plan says it passes, the agent missed it. Either way, send:
 
    ```text
    Rule II says money is whole cents. Change the plan to store and calculate every amount as whole cents in INTEGER columns, and re-run the Constitution Check.
