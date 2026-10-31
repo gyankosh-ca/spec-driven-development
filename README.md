@@ -40,8 +40,8 @@ account. Unused codespaces are deleted after about 30 days.
 
 ## After the session
 
-- [`YOUR-OWN-PROJECT.md`](YOUR-OWN-PROJECT.md): the same loop on your own app, new or existing.
-- [`decision-card.md`](decision-card.md): when a spec is worth it, and your own rule.
+- [`take-home/YOUR-OWN-PROJECT.md`](take-home/YOUR-OWN-PROJECT.md): the same loop on your own app, new or existing.
+- [`take-home/decision-card.md`](take-home/decision-card.md): when a spec is worth it, and your own rule.
 - Practice: spec a second feature, **settle up**, on your own.
 
 ## Working on your own laptop instead
@@ -51,8 +51,8 @@ dashboard), open a terminal in its folder and run one command:
 
 | Your laptop | Command |
 |---|---|
-| Mac or Linux | `bash setup-local.sh` |
-| Windows | `powershell -ExecutionPolicy Bypass -File setup-local.ps1` |
+| Mac or Linux | `bash .setup/setup-local.sh` |
+| Windows | `powershell -ExecutionPolicy Bypass -File .setup/setup-local.ps1` |
 
 It installs only what is missing: Node.js 24, `uv`, Spec Kit, and on Windows Git
 (which brings the `bash` that Spec Kit's scripts need). Then open the folder in VS

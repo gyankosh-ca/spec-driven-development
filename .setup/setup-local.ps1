@@ -1,5 +1,5 @@
 # Sets up this repo on your own Windows laptop, without Docker or Codespaces.
-# Run from the repo folder:  powershell -ExecutionPolicy Bypass -File setup-local.ps1
+# Run from the repo folder:  powershell -ExecutionPolicy Bypass -File .setup/setup-local.ps1
 # Safe to run again: anything already installed is left alone.
 # Native tools print progress on stderr, so failures are caught by exit code, not by
 # PowerShell's error stream.

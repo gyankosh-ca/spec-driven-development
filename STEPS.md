@@ -201,5 +201,5 @@ Branch: `step-6`
 
 - **Practice:** add a second feature, **settle up**, which suggests the fewest payments that clear every balance. It is a new feature, so start a new spec: `/speckit-specify` makes `specs/002-settle-up/`. Then go round the same loop: plan, tasks, implement, converge.
 - **More practice:** edit or delete an expense. The spec never asked for either, so the app has neither. Add them to the spec first, then the same loop.
-- **Your own app:** [`YOUR-OWN-PROJECT.md`](YOUR-OWN-PROJECT.md) walks through the same loop on a project of yours, new or existing.
-- **When to bother:** [`decision-card.md`](decision-card.md) says when a spec is worth it. Fill in "My rule" for your own team.
+- **Your own app:** [`take-home/YOUR-OWN-PROJECT.md`](take-home/YOUR-OWN-PROJECT.md) walks through the same loop on a project of yours, new or existing.
+- **When to bother:** [`take-home/decision-card.md`](take-home/decision-card.md) says when a spec is worth it. Fill in "My rule" for your own team.

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Sets up this repo on your own Mac or Linux laptop, without Docker or Codespaces.
-# Run from the repo folder:  bash setup-local.sh
+# Run from the repo folder:  bash .setup/setup-local.sh
 # Safe to run again: anything already installed is left alone.
 set -euo pipefail
 

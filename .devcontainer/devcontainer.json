@@ -13,8 +13,16 @@
   "customizations": {
     "codespaces": { "openFiles": ["STEPS.md"] },
     "vscode": {
-      "settings": { "terminal.integrated.fontSize": 16, "editor.fontSize": 16 },
-      "extensions": ["GitHub.copilot", "GitHub.copilot-chat", "kilocode.kilo-code"]
+      "settings": {
+        "terminal.integrated.fontSize": 16,
+        "editor.fontSize": 16,
+        "workbench.editorAssociations": {
+          "README.md": "vscode.markdown.preview.editor",
+          "STEPS.md": "vscode.markdown.preview.editor",
+          "**/take-home/*.md": "vscode.markdown.preview.editor"
+        }
+      },
+      "extensions": ["GitHub.copilot", "GitHub.copilot-chat", "kilocode.kilo-code", "bierner.markdown-checkbox"]
     }
   }
 }
