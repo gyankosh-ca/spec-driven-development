@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Expense Splitter</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Expense Splitter</h1>
+    <div class="group-bar">
+      <input id="group-name" aria-label="Group name" placeholder="Group name (e.g. Lake trip)">
+      <button id="reset" class="ghost" type="button">Start over</button>
+    </div>
+  </header>
+  <main>
+    <section class="card">
+      <h2>Friends</h2>
+      <form id="person-form" class="row">
+        <input id="person-name" aria-label="Friend's name" placeholder="Add a friend's name" required maxlength="40">
+        <button type="submit">Add</button>
+      </form>
+      <ul id="people" class="chips"></ul>
+    </section>
+
+    <section class="card">
+      <h2>Add an expense</h2>
+      <form id="expense-form" class="stack">
+        <input id="exp-desc" aria-label="Description" placeholder="What was it for? (e.g. Dinner)" required maxlength="80">
+        <div class="row">
+          <label>Amount <input id="exp-amount" type="number" min="0.01" step="0.01" inputmode="decimal" required></label>
+          <label>Paid by <select id="exp-payer" required></select></label>
+        </div>
+        <fieldset>
+          <legend>Split equally between</legend>
+          <div id="exp-among" class="checks"></div>
+        </fieldset>
+        <p id="exp-error" class="error" role="alert"></p>
+        <button type="submit">Add expense</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Expenses <span id="total" class="muted"></span></h2>
+      <ul id="expenses" class="list"></ul>
+    </section>
+
+    <section class="card">
+      <h2>Balances</h2>
+      <ul id="balances" class="list"></ul>
+      <h2 class="spaced">Who pays whom</h2>
+      <ul id="settle" class="list"></ul>
+    </section>
+  </main>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
