@@ -47,8 +47,15 @@ as a copy (a fork) under your own account. Unused codespaces are deleted after a
 
 ## Working on your own laptop instead
 
-No Docker needed. Get the repo (clone it, or download the zip from your Academy
-dashboard), open a terminal in its folder and run one command:
+No Docker needed. You need Git (`git --version`; on Windows `winget install --id Git.Git -e`).
+Clone the repo, not a zip: a zip has no step branches to catch up from.
+
+```bash
+git clone https://github.com/gyankosh-ca/spec-driven-development.git
+cd spec-driven-development
+```
+
+Then run one command:
 
 | Your laptop | Command |
 |---|---|
