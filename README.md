@@ -12,7 +12,7 @@ Course page: https://academy.gyankosh.ca/courses/spec-driven-development
 3. Do this **10 minutes before the session starts**.
 
 The codespace is yours alone and runs on your own GitHub free allowance
-(about 60 hours a month; a session uses about 2).
+(about 60 hours a month on this 2-core codespace).
 
 ## Fell behind?
 
@@ -29,14 +29,14 @@ git checkout step-3            # jump to the end of step 3
 | `step-1` | Spec Kit set up, and the project's three rules (the constitution) written |
 | `step-2` | The spec for the expense splitter, clarified |
 | `step-3` | The technical plan, checked against the rules |
-| `step-4` | The task list, each task starting with a test |
+| `step-4` | The task list, a test before the code in every story |
 | `step-5` | The app built: running in a browser tab, tests passing |
 | `step-6` | Split by shares added: spec first, then the code |
 
 ## Keep your work
 
-Commit in the codespace. GitHub offers to save it as a copy (a fork) under your own
-account. Unused codespaces are deleted after about 30 days.
+Commit in the codespace, then **Publish Branch** in Source Control. GitHub offers to save it
+as a copy (a fork) under your own account. Unused codespaces are deleted after about 30 days.
 
 ## After the session
 

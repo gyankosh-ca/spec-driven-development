@@ -29,7 +29,7 @@ Open a terminal in your project's folder and run, with your agent's key from the
 table in `STEPS.md`:
 
 ```text
-specify init --here --integration copilot
+specify init --here --integration copilot --script sh
 ```
 
 On Windows without Git Bash, add `--script ps` so Spec Kit's helper scripts run in

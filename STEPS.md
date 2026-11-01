@@ -107,7 +107,7 @@ Branch: `step-1`
    - **A:** Given Asha paid 90.00 for Asha, Ben and Chen, when the balances page is opened, then Asha is owed 60.00 and Ben and Chen each owe 30.00.
    - **B:** Given a group with expenses, when a member opens the balances page, then they can easily see who owes what.
 
-   B cannot be tested: nothing says what "easily" means. Find any scenario like B in your spec and rewrite it with real figures, like A.
+   B cannot be tested: nothing says what "easily" means. Find any scenario like B in your spec and rewrite it with real figures, like A. If your spec has none, rewrite B itself.
 
 Starting from only a vague idea on your own project? After `/speckit-specify`, send `/speckit-clarify`. It asks up to five questions and writes your answers into the spec.
 
@@ -128,7 +128,7 @@ Branch: `step-2`
 
 2. Open `specs/001-expense-splitter/plan.md` and find the **Constitution Check** table.
 3. **Predict before you read it:** which of your three rules does the last line break?
-4. If the agent stops and asks instead, it caught the break: pick keeping the constitution, then go to item 5. Otherwise, if the plan says it passes, the agent missed it. Either way, send:
+4. If the agent stopped and asked, it caught the break: pick keeping the constitution, then go to item 5. If the plan flags the break, or says it passes (the agent missed it), send:
 
    ```text
    Rule II says money is whole cents. Change the plan to store and calculate every amount as whole cents in INTEGER columns, and re-run the Constitution Check.
@@ -170,7 +170,7 @@ Branch: `step-4`
 
 2. Watch the agent tick tasks off in `tasks.md`. Approve the commands it asks to run. You do not name the spec: implement works on the current feature, `001-expense-splitter`.
 3. When it stops, run `npm test` yourself rather than taking the agent's word that everything passed. Then `npm run dev`. Codespaces opens the app in a new tab. Create a group and add three people.
-4. The rest of the tasks take longer than the session allows. Jump to the finished app to see all three stories working:
+4. The rest of the tasks take a while. Jump to the finished app to see all three stories working:
 
    ```bash
    # Stop the app first: Ctrl+C in its terminal
@@ -212,7 +212,7 @@ These are five messages, sent one at a time. No command runs them all.
 4. Build the new tasks: send `/speckit-implement`, then run `npm test`.
 5. Send `/speckit-converge` again. When the code matches the spec, it reports **Converged**. If it finds another gap, implement and converge once more.
 
-To jump to the finished version: stop the app (Ctrl+C), then `git stash -u`, `git checkout step-6`, `npm install`, `npm run dev`. Record the hotel by shares and check the balances.
+To jump to the finished version: stop the app (Ctrl+C), then `git stash -u`, `git checkout step-6`, `npm install`, `npm test`, `npm run dev`. Record the hotel by shares and check the balances.
 
 **You should now see:** User Story 4 in the spec, a Phase 7: Convergence in `tasks.md` with every task ticked, 37 passing tests, and the hotel split 50.00, 25.00, 25.00.
 
