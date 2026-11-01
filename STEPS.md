@@ -200,7 +200,12 @@ These are five messages, sent one at a time. No command runs them all.
 
    Read the new user story. Every acceptance scenario should state exact figures, as in the spec clinic.
 2. Re-plan: send `/speckit-plan Re-plan for split by shares.` and check the Constitution Check still passes rule II.
-3. Find the gap: send `/speckit-converge`. It compares the code with the spec and plan, and adds a **Convergence** phase of new tasks to `tasks.md`. It does not change any code. (Not `/speckit-tasks`, which would rewrite the whole list.)
+3. Find the gap: send this. It compares the code with the spec and plan, and adds a **Convergence** phase of new tasks to `tasks.md`. It does not change any code. (Not `/speckit-tasks`, which would rewrite the whole list.) Sent with nothing after it, converge may refuse, because `tasks.md` has no tasks for the new story yet; that is why the message says what changed.
+
+   ```text
+   /speckit-converge The spec and plan gained User Story 4, split by shares. Append its missing work as the Convergence phase; do not regenerate tasks.md.
+   ```
+
 4. Build the new tasks: send `/speckit-implement`, then run `npm test`.
 5. Send `/speckit-converge` again. When the code matches the spec, it reports **Converged**. If it finds another gap, implement and converge once more.
 
