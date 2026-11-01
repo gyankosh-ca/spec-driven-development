@@ -67,7 +67,7 @@ You never write the spec, the plan or the tasks by hand. Each step is a message 
 | `/speckit-plan` | Your tech choices | `plan.md` and its companions | Read its Constitution Check yourself |
 | `/speckit-tasks` | Nothing | `tasks.md` | Check the order; cut extras |
 | `/speckit-implement` | How far to go | The code and tests | Run the tests |
-| `/speckit-converge` | Nothing | New tasks for any gaps | Implement them; run it again |
+| `/speckit-converge` | What changed | New tasks for any gaps | Implement them; run it again |
 
 Reviewing what the agent wrote is your job, and it is the part that matters. You never name the spec either: Spec Kit works on the feature you are on.
 
