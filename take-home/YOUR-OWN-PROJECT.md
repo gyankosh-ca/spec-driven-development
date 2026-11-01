@@ -32,7 +32,7 @@ table in `STEPS.md`:
 specify init --here --integration copilot --script sh
 ```
 
-On Windows without Git Bash, add `--script ps` so Spec Kit's helper scripts run in
+On Windows without Git Bash, use `--script ps` instead, so Spec Kit's helper scripts run in
 PowerShell. Answer **y** when it asks to merge into a folder that is not empty.
 
 It adds `.specify/` (templates, scripts, and soon your rules) and a folder of commands

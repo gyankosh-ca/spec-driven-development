@@ -42,6 +42,7 @@ as a copy (a fork) under your own account. Unused codespaces are deleted after a
 
 - [`take-home/YOUR-OWN-PROJECT.md`](take-home/YOUR-OWN-PROJECT.md): the same loop on your own app, new or existing.
 - [`take-home/decision-card.md`](take-home/decision-card.md): when a spec is worth it, and your own rule.
+- [`take-home/TRY-KIRO.md`](take-home/TRY-KIRO.md) and [`take-home/TRY-OPENSPEC.md`](take-home/TRY-OPENSPEC.md): the same work in the two other spec tools, to compare.
 - Practice: spec a second feature, **settle up**, on your own.
 
 ## Working on your own laptop instead

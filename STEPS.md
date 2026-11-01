@@ -224,3 +224,4 @@ Branch: `step-6`
 - **More practice:** edit or delete an expense. The spec never asked for either, so the app has neither. Add them to the spec first, then the same loop.
 - **Your own app:** [`take-home/YOUR-OWN-PROJECT.md`](take-home/YOUR-OWN-PROJECT.md) walks through the same loop on a project of yours, new or existing.
 - **When to bother:** [`take-home/decision-card.md`](take-home/decision-card.md) says when a spec is worth it. Fill in "My rule" for your own team.
+- **Other tools:** [`take-home/TRY-KIRO.md`](take-home/TRY-KIRO.md) builds the same app in Kiro; [`take-home/TRY-OPENSPEC.md`](take-home/TRY-OPENSPEC.md) makes the split-by-shares change in OpenSpec.
