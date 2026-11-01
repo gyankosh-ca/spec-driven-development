@@ -12,6 +12,18 @@ git stash -u               # set your attempt aside, new files too (git stash po
 git checkout step-<k>  # carry on from the end of step k
 ```
 
+Want to keep your own attempt instead? Commit it to a branch of its own, then jump:
+
+```bash
+git checkout -b my-attempt
+git add -A
+git commit -m "My attempt"
+git checkout step-<k>
+```
+
+To keep it after the codespace is gone, open **Source Control**, switch to `my-attempt` and
+click **Publish Branch**. GitHub offers to save it as your own copy (a fork).
+
 ## Before you start
 
 1. Open this repo in a codespace (the button in `README.md`) and wait for the setup to finish.
