@@ -116,7 +116,9 @@ Change the spec first, never the code:
 1. In plain chat: "Update `specs/001-<feature>/spec.md` and nothing else: add …".
    Not `/speckit-specify`, which would start a second feature.
 2. `/speckit-plan Re-plan for <the change>.`
-3. `/speckit-converge` adds the gaps between code and spec as new tasks.
+3. `/speckit-converge The spec and plan gained <the change>. Append its missing work as the Convergence phase; do not regenerate tasks.md.`
+   It adds the gaps between code and spec as new tasks. Say what changed: sent with
+   nothing after it, converge may refuse, because `tasks.md` has no tasks for the change yet.
 4. `/speckit-implement`, then run your tests.
 5. `/speckit-converge` again, until it reports **Converged**.
 
