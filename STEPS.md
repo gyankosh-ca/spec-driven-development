@@ -8,7 +8,7 @@ Work through the steps in order. Each step ends at a branch with that step alrea
 If you fall behind, jump to it:
 
 ```bash
-git stash                  # set your own attempt aside (git stash pop brings it back)
+git stash -u               # set your attempt aside, new files too (git stash pop brings it back)
 git checkout step-<k>  # carry on from the end of step k
 ```
 
@@ -160,7 +160,7 @@ Branch: `step-4`
 4. The rest of the tasks take longer than the session allows. Jump to the finished app to see all three stories working:
 
    ```bash
-   git stash
+   git stash -u
    git checkout step-5
    npm install
    npm test
@@ -192,7 +192,7 @@ These are five messages, sent one at a time. No command runs them all.
 4. Build the new tasks: send `/speckit-implement`, then run `npm test`.
 5. Send `/speckit-converge` again. When the code matches the spec, it reports **Converged**. If it finds another gap, implement and converge once more.
 
-To jump to the finished version: `git stash`, `git checkout step-6`, `npm install`, `npm run dev`. Record the hotel by shares and check the balances.
+To jump to the finished version: `git stash -u`, `git checkout step-6`, `npm install`, `npm run dev`. Record the hotel by shares and check the balances.
 
 **You should now see:** User Story 4 in the spec, a Phase 7: Convergence in `tasks.md` with every task ticked, 37 passing tests, and the hotel split 50.00, 25.00, 25.00.
 

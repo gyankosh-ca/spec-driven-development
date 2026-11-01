@@ -19,7 +19,7 @@ The codespace is yours alone and runs on your own GitHub free allowance
 Each step of the session has a branch with the work done up to that point:
 
 ```bash
-git stash                      # put your own changes aside
+git stash -u                   # put your own changes aside, new files too
 git checkout step-3            # jump to the end of step 3
 ```
 
